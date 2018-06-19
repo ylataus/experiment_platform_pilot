@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Experiment</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+       <div class="page-header">
+	 <h1><a >WAITING ROOM</a></h1>         
+ 	</div>	
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+	
+           <h3> You are currently waiting for two other Turkers to arrive, so that you can begin. In
+
+the mean time, here is some more information about the task. In this task you will
+
+be working together to solve a challenging puzzle.</h3>
+
+<h3>When the task begins you will be given the puzzle (everyone in your group is
+
+working on the same puzzle) and some clues to help solve the puzzle. You will also
+
+be provided with a shared spreadsheet to mark down your guesses and answers
+
+(everyone in your group will be able to see and edit the same spreadsheet).</h3>
+
+<h3>You will also be able to communicate with other Turkers in your group. Depending
+
+on your condition you will either be able to communicate using a group chat or an
+
+online forum. You will be able to type and submit messages to your group. They will
+
+see your messages (and you will see theirs) soon after they are submitted. We
+
+encourage you to use the communication channel to work together to solve this
+
+challenging problem.</h3>
+
+<h3>Groups that successfully solve the problem will be given a bonus.</h3>
+            </div>
+        </div>
+    </div>
+    
+  <script type="text/javascript" src='{% static "jquery-1.12.1.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "reconnecting-websocket.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "wait.js" %}'></script>
+    
+    </body>
+</html>
+
+
+
+

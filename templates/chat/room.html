@@ -1,0 +1,60 @@
+{% extends "base_chat.html" %}
+
+{% block content %}
+  {% load staticfiles %}
+<p><b>Instructions:</b></p>
+<p>
+For an upcoming assignment an employer is looking for the best candidate for the job. The employer has narrowed the choice down to four candidates. These four candidates were asked to perform a number of tests that are relevant for the job at hand. These tests measured their verbal, numerical, and visual skills. For each candidate you can find their performance on nine of these tests below (a “+” means good performance, a “–“ means bad performance, a “0” means average performance). Using the information provided answer the question:</p>
+<p><b>Which candidate do you consider the best candidate for the job?</b> </p> 
+
+
+<table style="width:70%;padding:5px;text-align:center;">
+<tr><td><b>Description:</b></td><td><b>Candidate A:</b></td><td><b>Candidate B:</b></td><td><b>Candidate C:</b></td><td><b>Candidate D:</b></td></tr>
+
+  {% for hint in hints %}
+    <tr>
+	{% for field, value in hint.fields.items %}
+		<td>{{ value }}</td>
+	{% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+
+<p><b>  {{ disp }} You cannot figure out this task alone. Use the chat window to introduce yourself to your group, so they know you are here. If your group has not yet arrived you will need to wait for at least two other people to arrive.</b>
+
+
+<p>LIVE CHAT--Submit messages to communicate with other Turkers--</p>
+<div id = "forum-frame" class="left" style="height:600px;width:1000px;border:1px solid #ccc;padding-left:20px; padding-right:20px;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+  <form id="chatform">
+    <table id="chat">
+      <tbody>
+        {% for message in messages %}
+          <tr>
+            <td>{{ message.formatted_timestamp }}</td>
+            <td>{{ message.handle }}</td>
+            <td>{{ message.message }}</td>
+          </tr> 
+        {% endfor %}
+      </tbody>
+      <tfoot>
+      <tr>
+        <td>Say something:</td>
+        <td colspan=2>
+          <input id="message" type="text" placeholder="message">
+          <button type="submit" id="go">Say it</button>
+        </td>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<br/>
+<p>Once you hit finish, you will not be able to work on the task anymore. Only press it once you are sure you are done with the task.<br/><b>Remember your answers, you will need them to answer questions on the next page.</b></p>
+<button onclick="location.href='{% url 'survey' %}'">Finish Task</button>
+
+{% endblock content %}
+
+{% block afterbody %}
+  <script type="text/javascript" src='{% static "jquery-1.12.1.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "reconnecting-websocket.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "chat.js" %}'></script>
+{% endblock afterbody %}
